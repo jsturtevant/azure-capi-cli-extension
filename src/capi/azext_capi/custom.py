@@ -782,10 +782,16 @@ def show_workload_cluster(cmd, capi_name):  # pylint: disable=unused-argument
 def update_workload_cluster(cmd, capi_name):
     raise NotImplementedError
 
+def install_tools(cmd):
+    logger.info('Checking if required tools are installed')
+    check_tools(cmd, True)
 
-def check_prereqs(cmd, install=False):
+def check_tools(cmd, install=False):
     check_kubectl(cmd, install)
     check_clusterctl(cmd, install)
+
+def check_prereqs(cmd, install=False):
+    check_tools(cmd, install)
 
     # Check for required environment variables
     # TODO: remove this when AAD Pod Identity becomes the default

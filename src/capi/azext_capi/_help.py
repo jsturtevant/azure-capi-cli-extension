@@ -141,3 +141,8 @@ helps['capi management update'] = """
 type: command
 short-summary: Update a CAPI management cluster.
 """
+
+helps['capi install'] = """
+type: command
+short-summary: installs all needed tools
+"""
