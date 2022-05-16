@@ -144,5 +144,8 @@ short-summary: Update a CAPI management cluster.
 
 helps['capi install'] = """
 type: command
-short-summary: installs all needed tools
+short-summary: installs needed tools
+parameters:
+  - name: --all-tools
+    short-summary: Install all needed and optional tools
 """

@@ -782,13 +782,19 @@ def show_workload_cluster(cmd, capi_name):  # pylint: disable=unused-argument
 def update_workload_cluster(cmd, capi_name):
     raise NotImplementedError
 
-def install_tools(cmd):
-    logger.info('Checking if required tools are installed')
-    check_tools(cmd, True)
 
-def check_tools(cmd, install=False):
+def install_tools(cmd, all_tools=False):
+    logger.info('Checking if required tools are installed')
+    check_tools(cmd, install=True, all_tools=all_tools)
+
+
+def check_tools(cmd, install=False, all_tools=False):
     check_kubectl(cmd, install)
     check_clusterctl(cmd, install)
+    if not all_tools:
+        return
+    check_kind(cmd, install)
+
 
 def check_prereqs(cmd, install=False):
     check_tools(cmd, install)
